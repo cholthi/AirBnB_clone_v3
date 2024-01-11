@@ -12,13 +12,14 @@ from models.review import Review
 
 
 classes = {'user': User, 'state': State, 'city': City,
-        'review': Review, 'place': Place, 'amenity': Amenity}
+           'review': Review, 'place': Place, 'amenity': Amenity}
 
 
 @app_views.route('/status', methods=['GET'])
 def status():
     """view for status endpoint"""
     return jsonify({'status': 'OK'})
+
 
 @app_views.route('/stats', methods=['GET'])
 def stats():
@@ -27,4 +28,3 @@ def stats():
     for cls in classes:
         stat_dict[cls] = storage.count(classes[cls])
     return jsonify(stat_dict)
-
