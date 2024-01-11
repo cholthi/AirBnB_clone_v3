@@ -30,7 +30,8 @@ def delete_state(state_id):
     deleted = False
     for obj in all_states:
         if obj.id == state_id:
-            storage.remove(obj)
+            storage.delete(obj)
+            storage.save()
             deleted = True
         if deleted:
             break
