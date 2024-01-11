@@ -69,4 +69,4 @@ def update_state(state_id):
             state.name = request.json['name']
             break
     storage.save()
-    return jsonify(state.to_dict()), 201
+    return jsonify(state.to_dict()), 200
