@@ -6,6 +6,7 @@ from models import storage
 from models.user import User
 from datetime import datetime
 import uuid
+import hashlib
 
 
 @app_views.route('/users/', methods=['GET'])
@@ -52,7 +53,7 @@ def create_user():
         abort(400, 'Missing name')
     users = []
     new_user = User(email=request.json['email'],
-                    password=request.json['password'])
+                    password=hashlib.md5(request.json['password'].encode()).hexdigest())
     storage.new(new_user)
     storage.save()
     users.append(new_user.to_dict())
@@ -88,5 +89,10 @@ def updates_user(user_id):
                     obj.last_name = request.json['last_name']
             except:
                 pass
+            try:
+                if request.json['password'] is not None:
+                    obj.password = hashlib.md5(request.json['password'].encode()).hexdigest()
+            except:
+                    pass
     storage.save()
     return jsonify(user_obj[0]), 200
