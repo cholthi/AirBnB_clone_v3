@@ -11,8 +11,8 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-classes = {'user': User, 'state': State, 'city': City,
-           'review': Review, 'place': Place, 'amenity': Amenity}
+classes = {'users': User, 'states': State, 'cities': City,
+           'reviews': Review, 'places': Place, 'amenities': Amenity}
 
 
 @app_views.route('/status', methods=['GET'])
