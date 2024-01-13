@@ -65,15 +65,11 @@ def put_user(user_id):
     Updates a user
     """
     user = storage.get(User, user_id)
-
     if not user:
         abort(404)
-
     if not request.get_json():
         abort(400, description="Not a JSON")
-
     ignore = ['id', 'email', 'created_at', 'updated_at']
-
     data = request.get_json()
     for key, value in data.items():
         if key not in ignore:
