@@ -6,6 +6,7 @@ from models import storage
 from models.city import City
 from models.place import Place
 from models.state import State
+from models.amenity import Amenity
 from datetime import datetime
 import uuid
 
